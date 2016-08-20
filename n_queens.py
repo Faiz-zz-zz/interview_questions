@@ -27,4 +27,24 @@ class Solution(object):
         :type n: int
         :rtype: List[List[str]]
         """
-        
+        def recurMethod(list_of_placements, queens_left):
+            if queens_left == 0:
+                return True
+
+            nextPos = findNextValidSpace(list_of_placements)
+
+            if nextPos == None:
+                return False
+
+            return recurMethod(list_of_placements.append(nextPos), queens_left - 1)    
+
+        def findNextValidSpace(list_of_placements):
+            for i in range(n):
+                for j in range(n):
+                    for places in list_of_placements:
+                        row = i == places[0]
+                        columns = j == places[1]
+                        diagonal = (i -- places[0]) == (j -- places[1]) 
+                        if not (row and columns and diagonal):
+                            return [i, j]
+

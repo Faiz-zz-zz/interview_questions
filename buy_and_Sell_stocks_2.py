@@ -14,9 +14,9 @@ class Solution(object):
         maxPro = 0
 
         for i in range(1, len(prices)):
-        	if prices[i] > prices[i - 1]:
-        		maxPro += prices[i] - prices[i - 1]
+            if prices[i] > prices[i - 1]:
+                maxPro += prices[i] - prices[i - 1]
         return maxPro
         
 obj = Solution()
-print(obj.maxProfit([1, 2, 3]))        		
+print(obj.maxProfit([1, 2, 3]))             
