@@ -22,6 +22,7 @@ class Solution(object):
         :type target: int
         :rtype: List[List[int]]
         """
+
         retArray = [] 
         def recurMethod(array_so_far, candidates):
             if sum(array_so_far) == target:
@@ -37,6 +38,29 @@ class Solution(object):
 
         return retArray
 
+    def combinationSum1(self, candidates, target):
+        """
+        :type candidates: List[int]
+        :type target: int
+        :rtype: List[List[int]]
+        """
+        candidates.sort()
+        retArray = [] 
+        def recurMethod(target, start, valuelist):
+            length = len(candidates)
+            print(valuelist)
+            if target == 0:
+                retArray.append(valuelist)
+                return
+            for i in range(start, length):
+                if target < candidates[i]:
+                    return
+                recurMethod(target - candidates[i], i, valuelist + [candidates[i]])
+                
+        recurMethod(target, 0, []) 
+
+        return retArray    
+
 obj = Solution()
 
-print(obj.combinationSum([92,71,89,74,102,91,70,119,86,116,114,106,80,81,115,99,117,93,76,77,111,110,75,104,95,112,94,73], 310))
+print(obj.combinationSum1([8,7,4,3], 11))
