@@ -1,0 +1,79 @@
+So testing time!
+
+Make sure you have pip installed, and python3.
+
+Clone the repo from https://github.com/techsoc/roomie_mcroomface
+
+- install virtualenv by typing pip install virtualenv
+- create a env by typing virtualenv -p python3 env
+- activate the source by typing source env/bin/activate
+
+cd to roomie_mcroom/roomie_mcroom
+create a file aws_settings.py and add these Data base settings to these variabels
+
+HOST = 
+PORT = 
+USERNAME = 
+DB_NAME = 
+PASSWORD = 
+
+dw people, we will change password once its deployed :/
+
+cd to the main directory and type 'pip install -r requirements.txt' to install all the dependancies. 
+
+Endpoints:
+
+	1) Log a user in:
+		url : localhost:8000/login
+		restrictions: Anyone make a POST request
+		parameters : username;String, password;String
+		allowed request type : POST
+		curl : curl --data "username=wil&password=wilpassword" http:127.0.0.1:8000/login
+		Return : JSON indicating approprate message.
+
+	2) Get list of rooms and assoiated meta data
+		url : localhost:8000/get_list_of_rooms
+		restrictions : Only authenticated users can make a request
+		parameters: nill
+		allowed request types: GET
+		curl curl http:127.0.0.1:8000/get_list_of_rooms
+		return : Example JSON {"0": {
+						        "room_id": "RO-PIZZA",
+						        "printers": true,
+						        "capacity": 10,
+						        "room_name": "G01",
+						        "individual_access": false,
+						        "water_fountain": false,
+						        "coffee": false
+						    }}
+
+	3) Get room bookings on a specific room on a specific date
+		url: localhost:8000/get_room_bookings
+		restrictions : Only authenticated users can make a request
+		parameters: room_id:String, date:String #YYYYMMDD format
+		allowed request type : GET
+		curl: curl --data "room_id=RO-PIZZA&date=20160808" http:127.0.0.1:8000/get_room_bookings -u wil:wilpassword
+		return : Example return {
+			    "0": {
+			        "username": "emily emily emellee",
+			        "notes": "yoyoy -UCLU Technology Society",
+			        "end": "13:00:00",
+			        "start": "11:00:00"
+			    }
+			}
+	4) Book normal rooms
+		url : localhost:8000/book_room_normal
+		restrictions : Any authenticated user can make room bookings, except for token based authentications
+		parameters : room_id;String, date:YYYYMMDD, start_time, end_time:HH:MM, notes: 
+
+
+
+Feel free to make users and test them from admin interface localhost:8000/admin  username: admin, password: adminpassword
+
+Some test users I made:
+	wil, wilpassword -> Group2, Group3, Group4
+	moynappa, moynappapassword -> Group2, Group3, Group4
+	rema, remapassword -> Group2 only I think
+	emily, emilypassword -> Group2 only
+	matt, mattpassword -> Group2
+	vicky, vickypassword -> Group2
