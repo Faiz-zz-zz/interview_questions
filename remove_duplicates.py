@@ -11,37 +11,37 @@ Given 1->1->1->2->3, return 2->3."""
 #         self.next = None
 
 class Solution(object):
-    def deleteDuplicates(self, head):
-        """
-        :type head: ListNode
-        :rtype: ListNode
-        """
-        seenDict = {}
+	def deleteDuplicates(self, head):
+		"""
+		:type head: ListNode
+		:rtype: ListNode
+		"""
+		seenDict = {}
 
-        node = head
+		node = head
 
-        while node != None:
-        	if node.val in seenDict:
-        		seenDict[node.val] = 1
-        	else:
-        		seenDict[node.val] += 1
+		while node != None:
+			if node.val in seenDict:
+				seenDict[node.val] += 1
+			else:
+				seenDict[node.val] = 1
 
-       		node = node.next
-       	
-       	node = head
+			node = node.next
+		
+		node = head
 
-       	for i in seenDict:
-       		if seenDict[i] > 1:
-       			seenDict.pop(i, None)
+		for i in seenDict.keys():
+			if seenDict[i] > 1:
+				seenDict.pop(i, None)
+				
+		if len(seenDict) == 0:
+			return None
+		else:
+			keys = seenDict.keys()
 
-       	if len(seenDict) == 0:
-       		return None
-       	else:
-       		keys = seenDict.keys()
-
-       		head = ListNode(keys[0])
-
-       		for i in keys[1:]:
-       			head.next = ListNode(i)
-       			head = head.next
-
+			head = ListNode(keys[0])
+			node = head
+			for i in keys[1:]:
+				node.next = ListNode(i)
+				node = node.next
+		return head		

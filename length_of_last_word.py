@@ -16,4 +16,5 @@ class Solution(object):
         :type s: str
         :rtype: int
         """
-        words = s.split('')
+        words = s.split()
+        return 0 if len(words) == 0 else len(words[-1])
