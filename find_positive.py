@@ -23,3 +23,5 @@ class Solution(object):
             if num <= 0:
                 if front != 1 and front != -1:  # front == -1 means 1 is seen
                     front
+
+        def remove_duplicates(array):
