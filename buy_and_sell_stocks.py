@@ -34,7 +34,15 @@ class Solution(object):
 					elif thePair[0][1] - thePair[0][0] < num - thePair[0][0]:
 						thePair[0][1] = num
 		return thePair[0][1] - thePair[0][0]
-			
+
+	def max_profit2(self, prices):
+		minima = prices[0]
+		max_profit = 0
+		for num in prices:
+			minima = min(minima, num)
+			max_profit = max(max_profit, num - minima)
+		return max_profit
+
 obj = Solution()
 
-print(obj.maxProfit([5, 4, 3, 2, 1]))            				  
+print(obj.max_profit2([1,2, 100]))
