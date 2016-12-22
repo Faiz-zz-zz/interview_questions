@@ -26,6 +26,7 @@ Neither [n] nor [1,1,1,…,1] are valid solutions. If no valid solution exists,
 def decompose(n):
     # your code
     array = []
+
     def recurMethod(n, sub_ans):
         square_sum = sum(map(lambda k: k**2, sub_ans))
         if square_sum > n**2:

@@ -31,10 +31,6 @@ class Solution(object):
             for j in range(i + 1):
                 if dp[j][i]:
                     minvalue = min(minvalue, dpp[j])
-                    print("minvalue = ", minvalue)
-                    print(s[j:i+1], j, i)
-                    print(dpp)
-                    print()
             dpp[i + 1] = minvalue + 1
         return dpp[-1]
 

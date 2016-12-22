@@ -37,10 +37,10 @@ class Solution(object):
                         array.append([nums[i], nums[start], nums[end]])
                     start += 1
                     end -= 1
-        return array            
-        
+        return array           
+
 
 
 obj = Solution()
 
-print(obj.threeSum([0,1,1]))        
+print(obj.threeSum([0,1,1]))

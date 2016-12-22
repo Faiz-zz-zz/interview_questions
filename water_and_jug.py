@@ -32,6 +32,7 @@ class Solution(object):
         """
         if z == 0:
             return True
+
         for i in range(-x, 1):
             for j in range(y + 1):
                 if (i*x + j*y == z) or (i*y + j*x == z):

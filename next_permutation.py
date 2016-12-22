@@ -23,16 +23,14 @@ class Solution(object):
 		"""
 		if len(nums) < 2:
 			return
-		
+
 		back = 0
 		start = 0
-		
+
 		for i in reversed(range(len(nums) - 1)):
 			if nums[i] < nums[i+1]:
 				back = i
 				break
-		
-
 
 		for i in reversed(range(back, len(nums))):
 			if nums[i] > nums[back]:
@@ -41,15 +39,15 @@ class Solution(object):
 		nums[start], nums[back] = nums[back], nums[start]
 		if start == 0 and back == 0:
 			nums.reverse()
-		else:	
+		else:
 			nums[back + 1:] = reversed(nums[back + 1:])
 
 
 		# print(nums)
 
-		
-		
+
+
 obj = Solution()
 array = [3, 2, 1]
 obj.nextPermutation(array)
-print(array)            
+print(array)

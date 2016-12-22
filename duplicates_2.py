@@ -20,7 +20,7 @@ class Solution(object):
         return False
 
     def containsNearbyAlmostDuplicate(self, nums, k, t):
-        position_array = sorted(range(len(nums)), key = lambda x: nums[x])
+        position_array = sorted(range(len(nums)), key=lambda x: nums[x])
         for i in range(len(nums)-1):
             j = i + 1
             while j < len(nums) and nums[position_array[j]] - nums[position_array[i]] <= t:

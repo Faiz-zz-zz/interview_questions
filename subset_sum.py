@@ -31,7 +31,7 @@ class Solution(object):
         """
         if sum(nums) % 2 == 1:
             return False
-        target = sum(nums)/2
+        target = sum(nums)//2
         table = [
                 [False for i in range(len(nums) + 1)]
                 for i in range(target + 1)
@@ -46,6 +46,8 @@ class Solution(object):
                 table[i][j] = table[i][j - 1]
                 if i >= nums[j - 1]:
                     table[i][j] = table[i][j] or table[i - nums[j - 1]][j - 1]
+        for row in table:
+            print(row)
         return table[target][len(nums)]
 
     def solution1(self, nums):
@@ -66,3 +68,5 @@ class Solution(object):
             return False
 
         return recurMethod(target, 0)
+
+print(Solution().canPartition([1, 2, 3]))

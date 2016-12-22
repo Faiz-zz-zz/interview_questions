@@ -16,12 +16,10 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
-        front = 1
-        end = 1
 
-        for num in nums:
+        counter = 0
+        for index, num in enumerate(nums):
             if num <= 0:
-                if front != 1 and front != -1:  # front == -1 means 1 is seen
-                    front
-
-        def remove_duplicates(array):
+                nums[i] = 0
+            else:
+                counter += 1

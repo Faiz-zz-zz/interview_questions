@@ -14,33 +14,29 @@ You may not engage in multiple transactions at the same time (ie, you must
 
 class Solution(object):
     def maxProfit(self, prices):
-		"""
-	       :type prices: List[int]
-	       :rtype: int
-        """
-		right = []
-		left = []
-		for i in range(len(prices)):
-			right.append(self.single(prices[i:]))
-			left.append(self.single(prices[:i]))
+        right = []
+        left = []
+        for i in range(len(prices)):
+            right.append(self.single(prices[i:]))
+            left.append(self.single(prices[:i]))
 
         return max(map(lambda k: k[0] + k[1], list(zip(right, left))))
 
-	def single(self, prices):
-		if prices == []:
-			return 0
-		thePair = [[prices[0], prices[0]], prices[0]]
-		for num in prices:
-			if num < thePair[1]:
-				thePair[1] = num
-			else:
-				if num > thePair[1]:
-					if (num - thePair[1]) > (thePair[0][1] - thePair[0][0]):
-						thePair[0][0] = thePair[1]
-						thePair[0][1] = num
-					elif thePair[0][1] - thePair[0][0] < num - thePair[0][0]:
-						thePair[0][1] = num
-		return thePair[0][1] - thePair[0][0]
+    def single(self, prices):
+        if prices == []:
+            return 0
+        thePair = [[prices[0], prices[0]], prices[0]]
+        for num in prices:
+            if num < thePair[1]:
+                thePair[1] = num
+            else:
+                if num > thePair[1]:
+                    if (num - thePair[1]) > (thePair[0][1] - thePair[0][0]):
+                        thePair[0][0] = thePair[1]
+                        thePair[0][1] = num
+                    elif thePair[0][1] - thePair[0][0] < num - thePair[0][0]:
+                        thePair[0][1] = num
+        return thePair[0][1] - thePair[0][0]
 
 
 	def maxProfit2(self, prices):

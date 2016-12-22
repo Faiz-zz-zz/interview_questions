@@ -7,7 +7,7 @@ class Solution(object):
         """
         counter = {}
         for letter in s:
-            if letter in counter:
+            if l~etter in counter:
                 print(letter, counter)
                 counter[letter] += 1
             else:

@@ -11,10 +11,9 @@ class Solution(object):
         :type s: str
         :rtype: bool
         """
-        dic = {"(":")", "{":"}", "[":"]"}
-        
+        dic = {"(": ")", "{": "}", "[": "]"}
         stack = []
-        
+
         for i in s:
             if i == '(' or i == '{' or i == '[':
                 stack.append(dic[i])
@@ -28,11 +27,9 @@ class Solution(object):
                     return False
         if len(stack) != 0:
             return False
-        else:    
-            return True            
-                   
-		
+        else:
+            return True
 
 obj = Solution()
 
-print(obj.isValid('()'))        
+print(obj.isValid('()'))
