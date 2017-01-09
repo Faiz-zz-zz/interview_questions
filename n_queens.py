@@ -1,6 +1,8 @@
 """
 The n-queens puzzle is the problem of placing n queens on an n×n chessboard such that no two queens attack each other.
 
+
+
 Given an integer n, return all distinct solutions to the n-queens puzzle.
 
 Each solution contains a distinct board configuration of the n-queens' placement, where 'Q' and '.' both indicate a queen and an empty space respectively.
@@ -19,32 +21,44 @@ There exist two distinct solutions to the 4-queens puzzle:
   "...Q",
   ".Q.."]
 ]
-
 """
+
 class Solution(object):
     def solveNQueens(self, n):
         """
         :type n: int
         :rtype: List[List[str]]
         """
-        def recurMethod(list_of_placements, queens_left):
-            if queens_left == 0:
-                return True
+        board = [[0 for i in range(n)] for j in range(n)]
 
-            nextPos = findNextValidSpace(list_of_placements)
+        result = []
 
-            if nextPos == None:
-                return False
+        def valid(i, j, array):
+            for elem in array:
+                if ((i + j) == (elem[0] + elem[1])) or ((j - i) == elem[1] - elem[0]):
+                    return False
+                if i == elem[0] or j == elem[1]:
+                    return False
+            return True
 
-            return recurMethod(list_of_placements.append(nextPos), queens_left - 1)    
+        def dfs(occupied, row):
+            if row > n - 1:
+                result.append(occupied)
+                return
 
-        def findNextValidSpace(list_of_placements):
             for i in range(n):
-                for j in range(n):
-                    for places in list_of_placements:
-                        row = i == places[0]
-                        columns = j == places[1]
-                        diagonal = (i -- places[0]) == (j -- places[1]) 
-                        if not (row and columns and diagonal):
-                            return [i, j]
+                if valid(row, i, occupied):
+                    dfs(occupied + [[row, i]], row + 1)
 
+        for i in range(n):
+            dfs([[0, i]], 1)
+
+        answer = []
+
+        for board in result:
+            new_ans = [["." for i in range(n)] for j in range(n)]
+            for elem in board:
+                new_ans[elem[0]][elem[1]] = "Q"
+            new = ["".join(array) for array in new_ans]
+            answer.append(new)
+        return answer

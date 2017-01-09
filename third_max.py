@@ -37,7 +37,7 @@ class Solution(object):
         if len(nums) <= 3:
             return min(nums)
 
-        first = second = third = nums[0]
+        first = second = third = min(nums)
 
         for num in nums:
             if num > first:
